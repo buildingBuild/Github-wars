@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<style>
+    body {
+        margin: 0;
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+
+    }
+
+    .header {
+        text-align: center;
+    }
+
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+    }
+
+    .header h1 {
+        margin-top: 7px;
+        font-family: "Open Sans", sans-serif;
+    }
+
+    .header h2 {
+        font-family: "Ubuntu", sans-serif;
+    }
+
+    .header-nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 30PX;
+        margin-right: 100px;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .header-nav {
+        font-family: 'Roboto', sans-serif;
+        font-size: 0.75rem;
+        color: grey;
+        font-weight: 200;
+        font-family: "Red Hat Display", sans-serif;
+        letter-spacing: 3px;
+        transition: 1.2s;
+    }
+
+
+    .header-nav h3 {
+        color: gray;
+        transition: color 0.3s ease-out;
+    }
+
+    .header-nav h3:hover {
+        color: white;
+    }
+
+
+
+
+    .begin {
+        background-image:
+            linear-gradient(to bottom, transparent, #1a1a1a),
+            url('2.svg');
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        height: 250px;
+        width: 100%;
+
+
+    }
+
+    .header h1 {
+        font-size: 60px;
+        color: white;
+        letter-spacing: 7px;
+        font-family: "Poppins", sans-serif;
+    }
+
+    .header h2 {
+        margin-top: -40px;
+        color: white;
+        letter-spacing: 3px;
+
+    }
+
+    .input-area {
+        display: flex;
+        flex-direction: column;
+        background-color: #1a1a1a;
+        width: 100%;
+        height: 1000px;
+    }
+
+    .input {
+        margin-top: 10%;
+        display: flex;
+
+        gap: 250px;
+        flex-direction: row;
+        justify-content: center;
+        letter-spacing: 2px;
+    }
+
+    .input h3 {
+        font-family: "Red Hat Display", sans-serif;
+        color: white;
+    }
+
+    .input h4 {
+        margin-top: 5px;
+        font-family: "Red Hat Display", sans-serif;
+        color: red;
+        font-style: italic;
+
+    }
+
+    .input input {
+        margin-top: -10px;
+        font-size: 30px;
+        width: 10em;
+        border-radius: 10px;
+        border: 4px solid;
+        border-color: purple;
+        padding: 5px;
+        height: 60px;
+        font-family: "Red Hat Display", sans-serif;
+
+
+        box-sizing: border-box;
+    }
+
+    .input input:focus {
+        border-color: purple;
+        box-shadow: none;
+
+        outline: none;
+
+    }
+
+
+    .input-side {
+        flex-direction: column;
+        justify-content: flex-start;
+        text-align: start;
+    }
+
+    .input img {
+        width: 200px;
+        height: 200px;
+    }
+
+    button {
+        margin-top: 30px;
+        width: 30%;
+        align-self: center;
+        height: 75x;
+        font-size: 40px;
+        background-color: #7950c6;
+        border-radius: 10px;
+        font-family: "Poppins", sans-serif;
+        color: white;
+    }
+
+
+    .submit {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .submit img {
+        width: 70px;
+        height: auto;
+        text-align: center;
+
+
+    }
+
+    .submit button {
+        display: flex;
+        align-items: center;
+        justify-self: center;
+        align-self: center;
+        height: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition: 0.3s ease-out;
+
+    }
+
+
+    .submit button:hover {
+        transform: scaleX(1.1);
+
+    }
+
+    .submit h4 {
+        font-family: 'Roboto', sans-serif;
+        color: grey;
+        letter-spacing: 3px;
+
+    }
+
+    .h4Class2 {
+        visibility: hidden;
+    }
+
+    .h4Class1 {
+        visibility: hidden;
+    }
+</style>
+
+<body>
+    <div class="flex-container">
+        <div class="begin">
+            <div class="header-nav">
+
+                <h3>HOW IT WORKS</h3>
+                <h3>CONTACT</h3>
+                <h3>ADVANCED VERSION</h3>
+            </div>
+            <div class="header">
+                <h1>GITHUB-WARS</h1>
+                <h2>BATTLE FRIENDS USING YOUR GITHUB STATS</h2>
+            </div>
+        </div>
+        <div class="input-area">
+            <div class="input">
+                <div class="input-side">
+                    <h3>User 1 GitHub Username</h3>
+                    <input placeholder="Github username" id="input1" />
+                    <h4 id="user1input" class="h4Class1"> Invalid username</h4>
+                </div>
+                <div class="input-side">
+                    <h3>User 2 GitHub Username</h3>
+                    <input placeholder="Github username" id="input2" />
+                    <h4 id="user2input" class="h4Class2">Invalid username</h4>
+                </div>
+
+            </div>
+            <div class="submit">
+                <button onclick="getusers()">BATTLE <img src="reshot-icon-swords-NW69UK8P4Q.svg" />
+                </button>
+                <h4>Fetching this and that ....</h4>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+
+</body>
+
+</html>
