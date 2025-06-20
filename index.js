@@ -207,6 +207,12 @@ let data2 = null;
 let points1 = 0;
 let points2 = 0;
 
+let points1B = 0;
+let points2B = 0;
+
+let Projectcounter1 = 0;
+let Projectcounter2 = 0;
+
 
 
 let userName1Override = "buildingBuild";
@@ -299,21 +305,35 @@ function findProfiles() {
 
     const emoji1 = document.getElementById("emoji1");
     const emoji2 = document.getElementById("emoji2");
+
+    let points1result = document.getElementById("points1-A");
+    let points2result = document.getElementById("points2-A");
+
     let user1true = findProfile1();
     if (user1true) {
         emoji1.setAttribute("src", "./images/green.png");
-
+        points1 += 10;
     }
     else {
         emoji1.setAttribute("src", "./images/Blue-512.webp");
+        points1 += 0;
+        points1.textcontent = `Points: ${points1}`
     }
     let user2true = findProfile2();
     if (user2true) {
         emoji2.setAttribute("src", "./images/green.png");
+        points2 += 10;
+        points2.textcontent = `Points: ${points2}`
     } else {
         emoji2.setAttribute("src", "./images/Blue-512.webp");
-
+        points2 += 0;
     }
+
+    points1result.textContent = `Points: ${points1}`;
+    points2result.textContent = `Points: ${points2}`;
+    getProjects_Commits();
+
+
 }
 
 function findProfile1() {
@@ -321,7 +341,7 @@ function findProfile1() {
     for (let i = 0; i < mockData1.public_repos; i++) {
 
         if (mockData1Repo[i].name == mockData1.login) {
-            console.log("Found 1")
+
             return true;
         }
 
@@ -334,17 +354,137 @@ function findProfile2() {
 
     for (let i = 0; i < mockData2.public_repos; i++) {
 
-        console.log(`mock data repo 2 name ${mockData2Repo[i].name}`)
-        console.log(`mock data 2 name ${mockData2.login}`)
+
 
         if (mockData2Repo[i].name == mockData2.login) {
-            console.log("Found 2");
 
             return true;
         }
 
     }
     return false;
+
+}
+
+
+
+
+async function getProjects_Commits() { // formerly was regular function then I realized
+
+    await getProjects_Commits1();
+    await getProjects_Commits2();  /// you can use await like this remember apis have to be fectchd 
+
+
+    let passableProjects_1 = Projectcounter1;
+    let passableProjects_2 = Projectcounter2;
+
+    console.log(`passable projects 1${passableProjects_1}`);
+    console.log(`passable projects 2${passableProjects_2}`);
+    console.log(`passable projects 1${passableProjects_1}`);
+
+    let points1result = document.getElementById("points1-B");
+    let points2result = document.getElementById("points2-B");
+    const emoji1 = document.getElementById("emoji1-B");
+    const emoji2 = document.getElementById("emoji2-B");
+
+    let projectAmount1 = document.getElementById("allowedProject1");
+    let projectAmount2 = document.getElementById("allowedProject2");
+
+
+
+    if (passableProjects_1 == passableProjects_2) {
+        points1 += 10;
+        points2 += 10;
+        emoji1.setAttribute("src", "./images/green.png");
+        emoji2.setAttribute("src", "./images/green.png");
+
+
+
+
+    }
+    else if (passableProjects_1 > passableProjects_2) {
+
+        points1 += 10;
+        emoji1.setAttribute("src", "./images/green.png");
+        emoji2.setAttribute("src", "./images/Blue-512.webp");
+
+
+    }
+    else if (passableProjects_2 > passableProjects_1) {
+        points2 += 10;
+        emoji2.setAttribute("src", "./images/green.png");
+        emoji1.setAttribute("src", "./images/Blue-512.webp");
+
+    }
+    points1result.textContent = `Points: ${points1}`;
+    points2result.textContent = `Points: ${points2}`;
+    projectAmount1.textContent = `Minimium Viable repos/Projects:  ${Projectcounter1}`;
+    projectAmount2.textContent = `Minimium Viable repos/Projects: ${Projectcounter2}`;
+
+
+
+
+
+
+
+}
+
+async function getProjects_Commits1() {
+
+    for (let i = 0; i < mockData1.public_repos; i++) {
+
+        let repoName = mockData1Repo[i].name;
+        let response = await fetch(`https://api.github.com/repos/${userName1Override}/${repoName}/readme`);
+        if (!response.ok) {
+            continue;
+        }
+
+        let responseB = await fetch(`https://api.github.com/repos/${userName1Override}/${repoName}/commits?per_page=10`);
+        if (!responseB.ok) {
+            continue;
+        }
+        let commits = await responseB.json();
+        let count = commits.length;
+
+        if (count >= 5) {
+            ++Projectcounter1
+        }
+
+
+
+    }
+
+
+
+
+}
+
+async function getProjects_Commits2() {
+
+    for (let i = 0; i < mockData2.public_repos; i++) {
+
+        let repoName = mockData2Repo[i].name;
+        let response = await fetch(`https://api.github.com/repos/${userName2Override}/${repoName}/readme`);
+        if (!response.ok) {
+            continue;
+        }
+
+        let responseB = await fetch(`https://api.github.com/repos/${userName2Override}/${repoName}/commits?per_page=10`);
+        if (!responseB.ok) {
+            continue;
+        }
+        let commits = await responseB.json();
+        let count = commits.length;
+
+        if (count >= 5) {
+            ++Projectcounter2
+        }
+
+
+
+    }
+
+
 
 }
 
@@ -358,3 +498,4 @@ Repos: https://api.github.com/users/{username}/repos
 Issues: https://api.github.com/repos/{owner}/{repo}/issues
 Commits: https://api.github.com/repos/{owner}/{repo}/commits
 */
+// https://api.github.com/repos/buildingBuild/BlueModoro/readme
