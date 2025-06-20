@@ -72,6 +72,128 @@ const mockData2 = {
 };
 
 
+const mockData1Repo = [
+    {
+        name: "BlueModoro",
+        description:
+            "This is an aestheic sleek and responsive Pomodoro timer app designed to help with focus and productivity while also motivating users",
+        language: "CSS",
+        url: "https://github.com/buildingBuild/BlueModoro",
+        homepage: "https://bluemodoro.vercel.app",
+    },
+    {
+        name: "buildingBuild",
+        description: "Config files for my GitHub profile.",
+        language: null,
+        url: "https://github.com/buildingBuild/buildingBuild",
+        homepage: "https://github.com/buildingBuild",
+    },
+    {
+        name: "Github-wars",
+        description:
+            "A fun game whereby you test your github profile stats against your friends and see who wins",
+        language: "HTML",
+        url: "https://github.com/buildingBuild/Github-wars",
+        homepage: null,
+    },
+    {
+        name: "One-piece-Crud-Application",
+        description:
+            "This is was a fun smalll project I did a while back in my first cs class that lets you save various information on pirates in the one piece universe ",
+        language: "C++",
+        url: "https://github.com/buildingBuild/One-piece-Crud-Application",
+        homepage: null,
+    },
+    {
+        name: "PhoneBook",
+        description:
+            "Phone Book console application used for practicing maps and keys used in data structures",
+        language: "C++",
+        url: "https://github.com/buildingBuild/PhoneBook",
+        homepage: null,
+    },
+    {
+        name: "Soundify",
+        description:
+            "A Music Application  that lets users create, organize and manage songs. Create playlists.",
+        language: "C++",
+        url: "https://github.com/buildingBuild/Soundify",
+        homepage: null,
+    },
+    {
+        name: "Vending-Machine-Project",
+        description:
+            "My program is a text-based vending machine program that allows users to buy drinks, restock drink inventory, and manage drink/product information through a terminal interface. It uses a file handling system to save and load inventory data, ensuring that changes can be accessed by other files.",
+        language: "C++",
+        url: "https://github.com/buildingBuild/Vending-Machine-Project",
+        homepage: null,
+    },
+];
+
+const mockData2Repo = [
+    {
+        name: "BlueModoro",
+        description:
+            "This is an aestheic sleek and responsive Pomodoro timer app designed to help with focus and productivity while also motivating users",
+        language: "CSS",
+        url: "https://github.com/buildingBuild/BlueModoro",
+        homepage: "https://bluemodoro.vercel.app",
+    },
+    {
+        name: "buildingBuild",
+        description: "Config files for my GitHub profile.",
+        language: null,
+        url: "https://github.com/buildingBuild/buildingBuild",
+        homepage: "https://github.com/buildingBuild",
+    },
+    {
+        name: "Github-wars",
+        description:
+            "A fun game whereby you test your github profile stats against your friends and see who wins",
+        language: "HTML",
+        url: "https://github.com/buildingBuild/Github-wars",
+        homepage: null,
+    },
+    {
+        name: "One-piece-Crud-Application",
+        description:
+            "This is was a fun smalll project I did a while back in my first cs class that lets you save various information on pirates in the one piece universe ",
+        language: "C++",
+        url: "https://github.com/buildingBuild/One-piece-Crud-Application",
+        homepage: null,
+    },
+    {
+        name: "PhoneBook",
+        description:
+            "Phone Book console application used for practicing maps and keys used in data structures",
+        language: "C++",
+        url: "https://github.com/buildingBuild/PhoneBook",
+        homepage: null,
+    },
+    {
+        name: "Soundify",
+        description:
+            "A Music Application  that lets users create, organize and manage songs. Create playlists.",
+        language: "C++",
+        url: "https://github.com/buildingBuild/Soundify",
+        homepage: null,
+    },
+    {
+        name: "Vending-Machine-Project",
+        description:
+            "My program is a text-based vending machine program that allows users to buy drinks, restock drink inventory, and manage drink/product information through a terminal interface. It uses a file handling system to save and load inventory data, ensuring that changes can be accessed by other files.",
+        language: "C++",
+        url: "https://github.com/buildingBuild/Vending-Machine-Project",
+        homepage: null,
+    },
+];
+
+
+
+
+
+
+
 
 
 
@@ -82,6 +204,8 @@ let userName1;
 let userName2;
 let data1 = null;
 let data2 = null;
+let points1 = 0;
+let points2 = 0;
 
 
 
@@ -89,9 +213,9 @@ let userName1Override = "buildingBuild";
 let userName2Override = "buildingBuild";
 getRelevantInfo() // jump passing
 async function getusers() {
-
-
     /*
+    
+    
         const input1work = document.getElementById("user1input");
         const input2work = document.getElementById("user2input");
     
@@ -144,12 +268,11 @@ async function getusers() {
         }
     
     
-    
+        //  https://api.github.com/users/{username}/repos
         getRelevantInfo()
-        running == true;
-    
     
     */
+
 }
 
 
@@ -165,8 +288,64 @@ function getRelevantInfo() {
     const user2 = document.getElementById("userName2Heading")
 
 
-    user1.textContent += mockData1.login
-    user2.textContent += mockData2.login
+    user1.textContent += mockData1.login;
+    user2.textContent += mockData2.login;
+
+    findProfiles();
+}
+
+
+function findProfiles() {
+
+    const emoji1 = document.getElementById("emoji1");
+    const emoji2 = document.getElementById("emoji2");
+    let user1true = findProfile1();
+    if (user1true) {
+        emoji1.setAttribute("src", "./images/green.png");
+
+    }
+    else {
+        emoji1.setAttribute("src", "./images/Blue-512.webp");
+    }
+    let user2true = findProfile2();
+    if (user2true) {
+        emoji2.setAttribute("src", "./images/green.png");
+    } else {
+        emoji2.setAttribute("src", "./images/Blue-512.webp");
+
+    }
+}
+
+function findProfile1() {
+
+    for (let i = 0; i < mockData1.public_repos; i++) {
+
+        if (mockData1Repo[i].name == mockData1.login) {
+            console.log("Found 1")
+            return true;
+        }
+
+    }
+    return false;
+
+}
+
+function findProfile2() {
+
+    for (let i = 0; i < mockData2.public_repos; i++) {
+
+        console.log(`mock data repo 2 name ${mockData2Repo[i].name}`)
+        console.log(`mock data 2 name ${mockData2.login}`)
+
+        if (mockData2Repo[i].name == mockData2.login) {
+            console.log("Found 2");
+
+            return true;
+        }
+
+    }
+    return false;
+
 }
 
 

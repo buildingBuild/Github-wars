@@ -268,6 +268,55 @@
     .one-ab-info {
         font-style: italic;
     }
+
+    .basic-info {
+        margin-top: 100px;
+        display: flex;
+        flex-direction: row;
+        gap: 30%;
+        justify-content: center;
+    }
+
+    .Github-profile {
+        margin-top: 100px;
+        display: flex;
+        flex-direction: row;
+        gap: 40%;
+        justify-content: center;
+    }
+
+
+    .Github-profile img {
+        width: 250px;
+        height: 250px;
+        border-radius: 10px;
+    }
+
+    hr {
+
+        width: 100%;
+    }
+
+    .intro-sections {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .intro-sections h2 {
+        font-family: sans-serif;
+        margin-top: 0;
+        font-style: italic;
+    }
+
+    .intro-sections h1 {
+        font-family: sans-serif;
+        letter-spacing: 3px;
+    }
+
+    .emojis {}
 </style>
 
 <body>
@@ -316,11 +365,28 @@
                     <h1 style="align-self: start"> POINTS: 0 </h1>
                 </div>
             </div>
+            <div class="intro-sections">
+                <hr />
+                <h1>IS A GITHUB PROFILE PRESENT ?</h1>
+                <h2>A GitHub Profile Serves as a Quick Introduction to You as a Developer.<br>
+                    It Shows Your Interests, Projects, Areas of Focus, and Activity Levels.<br>
+                    Think of It as a Resume. You Never Know Who Your Profile Might Reach.
+                </h2>
+                <hr />
+            </div>
+            <div class="Github-profile">
+                <div class="two-ab-info">
+                    <img src="./images/green.png" id="emoji1" alt="User 1 emoji" class="emojis">
+
+                </div>
+                <div class="two-ab-info">
+                    <img src="./images/Blue-512.webp" id="emoji2" alt="User 2 emoji" class="emojis">
+                </div>
+            </div>
+
+
         </div>
-
-
-    </div>
-    <script src="index.js"></script>
+        <script src="index.js"></script>
 
 </body>
 
