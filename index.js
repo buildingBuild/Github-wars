@@ -213,6 +213,10 @@ let points2B = 0;
 let Projectcounter1 = 0;
 let Projectcounter2 = 0;
 
+const languages1 = new Set();
+const languages2 = new Set();
+
+
 
 
 let userName1Override = "buildingBuild";
@@ -300,7 +304,7 @@ function getRelevantInfo() {
     findProfiles();
 }
 
-
+/*
 function findProfiles() {
 
     const emoji1 = document.getElementById("emoji1");
@@ -372,7 +376,7 @@ function findProfile2() {
 async function getProjects_Commits() { // formerly was regular function then I realized
 
     await getProjects_Commits1();
-    await getProjects_Commits2();  /// you can use await like this remember apis have to be fectchd 
+    await getProjects_Commits2();  /// you can use await like this remember apis have to be fectchd
 
 
     let passableProjects_1 = Projectcounter1;
@@ -418,11 +422,11 @@ async function getProjects_Commits() { // formerly was regular function then I r
     }
     points1result.textContent = `Points: ${points1}`;
     points2result.textContent = `Points: ${points2}`;
-    projectAmount1.textContent = `Minimium Viable repos/Projects:  ${Projectcounter1}`;
-    projectAmount2.textContent = `Minimium Viable repos/Projects: ${Projectcounter2}`;
+    projectAmount1.textContent = `MVs repos/Projects:  ${Projectcounter1}`;
+    projectAmount2.textContent = `MVs repos/Projects: ${Projectcounter2}`;
 
 
-
+    getTechStack();
 
 
 
@@ -488,7 +492,38 @@ async function getProjects_Commits2() {
 
 }
 
+async function getTechStack() {
 
+    await getTechStack1();
+    await getTechStack2();
+    languages1.delete("null")
+    languages2.delete("null")
+    console.log(languages1);
+    console.log(languages2);
+
+
+
+}
+
+async function getTechStack1() {
+    for (let i = 0; i < mockData1.public_repos; i++) {
+
+        languages1.add(`${mockData1Repo[i].language}`);
+
+    }
+
+
+}
+
+async function getTechStack2() {
+    for (let i = 0; i < mockData2.public_repos; i++) {
+
+        languages2.add(`${mockData2Repo[i].language}`);
+
+    }
+
+
+}
 
 // getuser();
 

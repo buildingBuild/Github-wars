@@ -316,7 +316,9 @@
         letter-spacing: 3px;
     }
 
-    .emojis {}
+    .emojis {
+        margin-top: -40px;
+    }
 
     .two-ab-info {
         display: flex;
@@ -338,15 +340,64 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
+        font-family: "Poppins", sans-serif;
+        font-family: "Red Hat Display", sans-serif;
+        text-align: center;
 
     }
 
-    .three-ab-info {
+    .three-ab-info h2 {
+        font-family: "Poppins", sans-serif;
+        font-family: "Red Hat Display", sans-serif;
+        text-align: center;
+        margin-top: -10px;
+    }
+
+    .four-ab-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .four-ab-info h1 {
         font-family: "Poppins", sans-serif;
         font-family: "Red Hat Display", sans-serif;
         text-align: center;
     }
+
+    .four-ab-info h2 {
+        font-family: "Poppins", sans-serif;
+        font-family: "Red Hat Display", sans-serif;
+        text-align: center;
+        margin-top: -10px;
+    }
+
+    .techbox {
+        display: flex;
+        flex-direction: row;
+        align-self: center;
+        justify-content: flex-start;
+        border-style: solid;
+        border-width: 10px;
+        border-color: #7950c6;
+        width: 300px;
+        height: 70px;
+        background-color: white;
+        padding: 10px;
+        overflow-x: scroll;
+        overflow-x: auto;
+        gap: 10px;
+        margin-bottom: 60px;
+    }
+
+    .languageBox {
+        background-color: antiquewhite;
+        height: 80%;
+        font-size: 3em;
+    }
+
+    .finalh1 {}
 </style>
 
 <body>
@@ -422,7 +473,7 @@
                     drive.<br>
                     However empty Repositories or those without
                     ReadMEs, minimal commits well signal another thing.<br> This section is not just about quantity but
-                    quality.
+                    quality. (How its graded)
                 </h2>
                 <hr />
             </div>
@@ -430,13 +481,13 @@
                 <div class="three-ab-info">
                     <img src="./images/green.png" id="emoji1-B" alt="User 1 emoji" class="emojis">
                     <h1 id="points1-B">Points: 0 </h1>
-                    <h1 id="allowedProject1">Minimum Viable repos/Projects: 0</h1>
+                    <h1 id="allowedProject1" style="margin-top: -20px;">MV repos/Projects: 0</h1>
 
                 </div>
                 <div class="three-ab-info">
                     <img src="./images/Blue-512.webp" id="emoji2-B" alt="User 2 emoji" class="emojis">
                     <h1 id="points2-B">Points: 0 </h1>
-                    <h1 id="allowedProject2">Minimum Viable Projects: 0</h1>
+                    <h1 id="allowedProject2" class="min" style="margin-top: -20px;">MV repos/Projects: 0</h1>
                 </div>
             </div>
             <div class="intro-sections">
@@ -449,9 +500,82 @@
                 <hr />
             </div>
 
+            <div class="Github-profile">
+                <div class="four-ab-info">
+                    <img src="./images/green.png" id="emoji1-C" alt="User 1 emoji" class="emojis">
+                    <h1 id="points1-C">Points: 0 </h1>
+                    <h2>Unique Tech Stack amount: </h2>
+                    <div class="techbox">
+                        <div class="languageBox">
+                            c++
+                        </div>
+                        <div class="languageBox">
+                            python
+                        </div>
+                        <div class="languageBox">
+                            React
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="four-ab-info">
+                    <img src="./images/Blue-512.webp" id="emoji2-C" alt="User 2 emoji" class="emojis">
+                    <h1 id="points2-C">Points: 0 </h1>
+                    <h2>Unique Tech stack amount: </h2>
+                    <div class="techbox">
+
+                        <div class="languageBox">
+                            c++
+                        </div>
+                        <div class="languageBox">
+                            python
+                        </div>
+                        <div class="languageBox">
+                            React
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="intro-sections">
+                <hr />
+                <h1>Popularity and Recognition (10)</h1>
+                <h2> Well sometimes being acknowleged by fellow developers boost motivation <br>
+                    This might be recieved by having a following or rather "forks" on your projects <br>
+
+                </h2>
+                <hr />
+            </div>
+            <div class="Github-profile">
+                <div class="four-ab-info">
+                    <img src="./images/green.png" id="emoji1-D" alt="User 1 emoji" class="emojis">
+                    <h1 id="points1-D" class="finalh1">Points: 0 </h1>
+                    <h1 style="margin-top: -10px;">Followers: </h1>
+                    <h1 style="margin-top: -10px;">Forks: </h1>
+
+
+                </div>
+                <div class="four-ab-info">
+                    <img src="./images/Blue-512.webp" id="emoji2-D" alt="User 2 emoji" class="emojis">
+                    <h1 id="points2-D">Points: 0 </h1>
+                    <h1 style="margin-top: -10px;">Followers: </h1>
+                    <h1 style="margin-top: -10px;"> Forks: </h1>
+
+                </div>
+            </div>
+
+            <div class="intro-sections">
+                <hr />
+                <h1 style="color: gold; font-size: 3em;">THE WINNER TAKES IT ALL! 👑 </h1>
+                <hr />
+            </div>
 
         </div>
-        <script src="index.js"></script>
+        <script src=" index.js">
+        </script>
 
 </body>
 
