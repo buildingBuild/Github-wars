@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Github-Wars!!!</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -80,7 +80,6 @@
 
     .begin {
         background-image:
-            linear-gradient(to bottom, transparent, #1a1a1a),
             url('./images/2.svg');
         background-size: cover;
         background-repeat: no-repeat;
@@ -247,10 +246,17 @@
         flex-direction: row;
         gap: 30%;
         justify-content: center;
+
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url('./images/purpleWaves.svg');
+        border-radius: 10px;
+
     }
 
 
     .basic-info img {
+        margin-top: 20px;
         width: 400px;
         height: 400px;
         border-radius: 10px;
@@ -273,14 +279,22 @@
         flex-direction: row;
         gap: 30%;
         justify-content: center;
+        color: white;
     }
 
     .Github-profile {
-        margin-top: 100px;
+        margin-top: -5px;
         display: flex;
         flex-direction: row;
         gap: 40%;
         justify-content: center;
+
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url('./images/purpleWaves.svg');
+        border-radius: 10px;
+        color: white;
+
     }
 
 
@@ -301,6 +315,11 @@
         justify-content: center;
         align-items: center;
         text-align: center;
+
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url('./images/whiteWaves.svg');
+        border-radius: 10px;
     }
 
     .intro-sections h2 {
@@ -315,7 +334,7 @@
     }
 
     .emojis {
-        margin-top: -40px;
+        margin-top: -10px;
     }
 
     .two-ab-info {
@@ -391,9 +410,11 @@
 
     .languageBox {
         background-color: antiquewhite;
+        background-color: deeppink;
         font-family: "Poppins", sans-serif;
         height: 90%;
         font-size: 3em;
+        color: white
     }
 
     .finalh1 {}
@@ -404,6 +425,10 @@
         flex-direction: row;
         gap: 20%;
         justify-content: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url('./images/whiteWaves.svg');
+        border-radius: 10px;
     }
 
 
@@ -435,6 +460,13 @@
         text-align: center;
         margin-top: -10px;
     }
+
+    .header-nav a {
+        color: grey;
+        text-decoration: none;
+        cursor: auto;
+        font-family: 'Roboto', sans-serif;
+    }
 </style>
 
 <body>
@@ -442,9 +474,9 @@
         <div class="begin">
             <div class="header-nav">
 
-                <h3>HOW IT WORKS</h3>
-                <h3>CONTACT</h3>
-                <h3>ADVANCED VERSION</h3>
+                <h3 onclick="pageNavigation()" style="cursor: pointer;">HOW IT WORKS </h3>
+                <h3 onclick="githubnav()" style="cursor: pointer;"> CONTACT </h3>
+                <h3 style="cursor: progress;">ADVANCED VERSION (Soon) </h3>
             </div>
             <div class="header">
                 <h1>GITHUB-WARS</h1>
@@ -590,7 +622,9 @@
 
             <div class="intro-sections">
                 <hr />
-                <h1 style="color: gold; font-size: 3em;" id="winnerText">THE WINNER TAKES IT ALL! 👑 </h1>
+                <h1 id="winnerText" style="color: gold; font-size: 3em; font-family: 'Open Sans', sans-serif;">
+                    THE WINNER TAKES IT ALL! 👑
+                </h1>
                 <hr />
             </div>
             <div class="Github-profiles">

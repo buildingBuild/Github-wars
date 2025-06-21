@@ -694,7 +694,7 @@ function getWinner() {
     if (points1 == points2) {
 
         let winnerText = document.getElementById("winnerText");
-        winnerText.textContent = "Fierce Battle, You both are winners ! "
+        winnerText.textContent = "FIERCE BATTLE, YOU BOTH ARE WINNERS ! "
         screen2.style.display = "flex";
         img1finale.setAttribute("src", mockData1.avatar_url);
         img2finale.setAttribute("src", mockData2.avatar_url);
@@ -722,6 +722,17 @@ function getWinner() {
         finalepoints1.textContent = `Points: ${points2}/40`
     }
 
+}
+
+
+function pageNavigation() {
+
+    window.location.href = "works.html";
+
+}
+
+function githubnav() {
+    window.location.href = "https://github.com/buildingBuild";
 }
 
 // getuser();
