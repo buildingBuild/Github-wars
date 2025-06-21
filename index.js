@@ -221,7 +221,7 @@ const languages2 = new Set();
 
 let userName1Override = "buildingBuild";
 let userName2Override = "buildingBuild";
-getRelevantInfo() // jump passing
+getRelevantInfo(); // jump passing
 async function getusers() {
     /*
     
@@ -304,7 +304,7 @@ function getRelevantInfo() {
     findProfiles();
 }
 
-/*
+
 function findProfiles() {
 
     const emoji1 = document.getElementById("emoji1");
@@ -481,7 +481,7 @@ async function getProjects_Commits2() {
         let count = commits.length;
 
         if (count >= 5) {
-            ++Projectcounter2
+            ++Projectcounter2;
         }
 
 
