@@ -216,6 +216,11 @@ let Projectcounter2 = 0;
 const languages1 = new Set();
 const languages2 = new Set();
 
+let followers1 = 0;
+let followers2 = 0;
+
+let following1 = 0;
+let following2 = 0;
 
 
 
@@ -498,9 +503,75 @@ async function getTechStack() {
     await getTechStack2();
     languages1.delete("null")
     languages2.delete("null")
+
+
     console.log(languages1);
     console.log(languages2);
 
+    const techStackAmount1 = document.getElementById("techStack-1");
+    const techStackAmount2 = document.getElementById("techStack-2");
+
+    const point1result = document.getElementById("points1-C");
+    const points2result = document.getElementById("points2-C");
+
+
+
+    const emoji1 = document.getElementById("emoji1-C");
+    const emoji2 = document.getElementById("emoji2-C");
+
+    techStackAmount1.textContent = `Unique Tech stack amount: ${languages1.size}`;
+    techStackAmount2.textContent = `Unique Tech stack amount: ${languages2.size}`;
+
+
+
+
+    if (languages1.size == languages2.size) {
+        points1 += 10;
+        points2 += 10;
+        emoji1.setAttribute("src", "./images/green.png");
+        emoji2.setAttribute("src", "./images/green.png");
+
+
+
+    }
+    else if (languages1.size > languages2.size) {
+        points1 += 10;
+        emoji1.setAttribute("src", "./images/green.png");
+        emoji2.setAttribute("src", "./images/Blue-512.webp");
+
+
+    }
+    else if (languages1.size < languages2.size) {
+        points2 += 10;
+        emoji2.setAttribute("src", "./images/green.png");
+        emoji1.setAttribute("src", "./images/Blue-512.webp");
+
+    }
+
+    languages1.forEach((value) => {
+        const newdiv = document.createElement("div");
+        newdiv.textContent = value;
+        newdiv.setAttribute("class", "languageBox");
+        document.getElementById("techBox1").append(newdiv);
+        languages1.delete(value);
+
+    })
+
+    languages2.forEach((value) => {
+        const newdiv = document.createElement("div");
+        newdiv.textContent = value;
+        newdiv.setAttribute("class", "languageBox");
+        document.getElementById("techBox2").append(newdiv);
+        languages2.delete(value);
+
+    })
+
+    point1result.textContent = `Points: ${points2}`;
+    points2result.textContent = `Points: ${points2}`;
+
+
+
+    getFollowersandForks();
 
 
 }
@@ -523,6 +594,73 @@ async function getTechStack2() {
     }
 
 
+}
+
+
+async function getFollowersandForks() {
+    followers1 = 0;
+    followers2 = 0;
+
+    following1 = 0;
+    following2 = 0;
+
+    const thefollowers1 = document.getElementById("followers1");
+    const thefollowers2 = document.getElementById("followers2");
+
+    const thefollowing1 = document.getElementById("following1");
+    const thefollowing2 = document.getElementById("following2");
+
+    await getFollowersandForks1();
+    await getFollowersandForks2();
+
+
+    thefollowers1.textContent = `Followers: ${followers1}`;
+    thefollowers2.textContent = `Followers: ${followers2}`;
+
+    thefollowing1.textContent = `Following: ${following1}`;
+    thefollowing2.textContent = `Following: ${following2}`;
+
+    if (followers1 == followers2) {
+        points1 += 5;
+        points2 += 5;
+
+    }
+    else if (followers1 > followers2) {
+        points1 += 5;
+    }
+    else if (followers2 < followers1) {
+        points1 += 5;
+    }
+
+    if (following1 == following2) {
+        points1 += 5;
+        points2 += 5;
+    }
+    else if (following1 > following2) {
+        points1 += 5;
+    }
+    else if (following1 < following2) {
+        points2 += 5;
+    }
+
+    const lastPoints1 = document.getElementById("points1-D");
+    const lastPoints2 = document.getElementById("points2-D");
+
+    lastPoints1.textContent = `Points: ${points1}`;
+    lastPoints2.textContent = `Points: ${points1}`;
+}
+
+
+async function getFollowersandForks1() {
+
+    followers1 = mockData1.followers;
+    following1 = mockData1.following;
+
+}
+
+async function getFollowersandForks2() {
+    followers2 = mockData2.followers;
+    following2 = mockData2.following;
 }
 
 // getuser();

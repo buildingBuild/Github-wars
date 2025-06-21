@@ -393,7 +393,8 @@
 
     .languageBox {
         background-color: antiquewhite;
-        height: 80%;
+        font-family: "Poppins", sans-serif;
+        height: 90%;
         font-size: 3em;
     }
 
@@ -419,12 +420,12 @@
                 <div class="input-side">
                     <h3>User 1 GitHub Username</h3>
                     <input placeholder="Github username" id="input1" />
-                    <h4 id="user1input" class="h4Class1"> Invalid username</h4>
+                    <h4 id="user1input" class="h4Class1"> Invalid username or private user</h4>
                 </div>
                 <div class="input-side">
                     <h3>User 2 GitHub Username</h3>
                     <input placeholder="Github username" id="input2" />
-                    <h4 id="user2input" class="h4Class2">Invalid username</h4>
+                    <h4 id="user2input" class="h4Class2">Invalid username or private user</h4>
                 </div>
 
             </div>
@@ -505,16 +506,8 @@
                     <img src="./images/green.png" id="emoji1-C" alt="User 1 emoji" class="emojis">
                     <h1 id="points1-C">Points: 0 </h1>
                     <h2 id="techStack-1">Unique Tech Stack amount: </h2>
-                    <div class="techbox">
-                        <div class="languageBox">
-                            c++
-                        </div>
-                        <div class="languageBox">
-                            python
-                        </div>
-                        <div class="languageBox">
-                            React
-                        </div>
+                    <div class="techbox" id="techBox1">
+
 
                     </div>
 
@@ -523,17 +516,9 @@
                     <img src="./images/Blue-512.webp" id="emoji2-C" alt="User 2 emoji" class="emojis">
                     <h1 id="points2-C">Points: 0 </h1>
                     <h2 id="techStack-2">Unique Tech stack amount: </h2>
-                    <div class="techbox">
+                    <div class="techbox" id="techBox2">
 
-                        <div class="languageBox">
-                            c++
-                        </div>
-                        <div class="languageBox">
-                            python
-                        </div>
-                        <div class="languageBox">
-                            React
-                        </div>
+
 
 
                     </div>
@@ -544,7 +529,7 @@
                 <hr />
                 <h1>Popularity and Recognition (10)</h1>
                 <h2> Well sometimes being acknowleged by fellow developers boost motivation <br>
-                    This might be recieved by having a following or rather "forks" on your projects <br>
+                    This might be recieved by having a following or rather following others <br>
 
                 </h2>
                 <hr />
@@ -553,16 +538,16 @@
                 <div class="four-ab-info">
                     <img src="./images/green.png" id="emoji1-D" alt="User 1 emoji" class="emojis">
                     <h1 id="points1-D" class="finalh1">Points: 0 </h1>
-                    <h1 style="margin-top: -10px;">Followers: </h1>
-                    <h1 style="margin-top: -10px;">Forks: </h1>
+                    <h1 style="margin-top: -10px;" id="followers1">Followers: </h1>
+                    <h1 style="margin-top: -10px;" id="following1">Following: </h1>
 
 
                 </div>
                 <div class="four-ab-info">
                     <img src="./images/Blue-512.webp" id="emoji2-D" alt="User 2 emoji" class="emojis">
                     <h1 id="points2-D">Points: 0 </h1>
-                    <h1 style="margin-top: -10px;">Followers: </h1>
-                    <h1 style="margin-top: -10px;"> Forks: </h1>
+                    <h1 style="margin-top: -10px;" id="followers2">Followers: </h1>
+                    <h1 style="margin-top: -10px;" id="following2"> Following: </h1>
 
                 </div>
             </div>
