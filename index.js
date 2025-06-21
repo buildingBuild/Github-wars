@@ -190,13 +190,6 @@ const mockData2Repo = [
 
 
 
-
-
-
-
-
-
-
 const input1 = document.getElementById("input1");
 const input2 = document.getElementById("input2");
 let running = false;
@@ -610,6 +603,9 @@ async function getFollowersandForks() {
     const thefollowing1 = document.getElementById("following1");
     const thefollowing2 = document.getElementById("following2");
 
+    const emoji1 = document.getElementById("emoji1-D")
+    const emoji2 = document.getElementById("emoji2-D")
+
     await getFollowersandForks1();
     await getFollowersandForks2();
 
@@ -643,11 +639,30 @@ async function getFollowersandForks() {
         points2 += 5;
     }
 
+
+    if (followers1 + following1 == followers2 + following2) {
+        emoji1.setAttribute("src", "./images/green.png");
+        emoji2.setAttribute("src", "./images/green.png");
+
+    }
+    else if (followers1 + following1 > followers2 + following2) {
+        emoji1.setAttribute("src", "./images/green.png");
+        emoji2.setAttribute("src", "./images/Blue-512.webp");
+
+    }
+    else if (followers1 + following1 < followers2 + following2) {
+        emoji2.setAttribute("src", "./images/green.png");
+        emoji1.setAttribute("src", "./images/Blue-512.webp");
+
+
+    }
     const lastPoints1 = document.getElementById("points1-D");
     const lastPoints2 = document.getElementById("points2-D");
 
     lastPoints1.textContent = `Points: ${points1}`;
     lastPoints2.textContent = `Points: ${points1}`;
+
+    getWinner();
 }
 
 
@@ -661,6 +676,52 @@ async function getFollowersandForks1() {
 async function getFollowersandForks2() {
     followers2 = mockData2.followers;
     following2 = mockData2.following;
+}
+
+
+function getWinner() {
+    const img1finale = document.getElementById("winnerImage-one");
+    const img2finale = document.getElementById("winnerImage-two");
+    const screen2 = document.getElementById("screen2");
+    const winningScreen1 = document.getElementById("winningScreen1");
+    const winningScreen2 = document.getElementById("winningScreen2");
+
+    finalepoints1 = document.getElementById("finalepoints1");
+    finalepoints2 = document.getElementById("finalepoints2");
+
+
+
+    if (points1 == points2) {
+
+        let winnerText = document.getElementById("winnerText");
+        winnerText.textContent = "Fierce Battle, You both are winners ! "
+        screen2.style.display = "flex";
+        img1finale.setAttribute("src", mockData1.avatar_url);
+        img2finale.setAttribute("src", mockData2.avatar_url);
+        winningScreen1.style.display = "none";
+        winningScreen2.style.display = "none";
+        finalepoints1.textContent = `Points: ${points1}/40`
+        finalepoints2.textContent = `Points: ${points2}/40`
+    }
+
+
+
+
+    if (points1 > points2) {
+        img1finale.setAttribute("src", mockData1.avatar_url)
+        screen2.style.display = "none";
+        winningScreen1.style.display = "block";
+        winningScreen1.textContent = `User ${mockData1.login} won by ${points1 - points2} points`;
+        finalepoints1.textContent = `Points: ${points1}/40`
+    }
+    if (points2 > points1) {
+        img2finale.setAttribute("src", mockData2.avatar_url);
+        screen2.style.display = "none";
+        winningScreen1.style.display = "block";
+        winningScreen1.textContent = `User ${mockData2.login} won by ${points2 - points1} points`;
+        finalepoints1.textContent = `Points: ${points2}/40`
+    }
+
 }
 
 // getuser();

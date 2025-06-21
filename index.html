@@ -24,8 +24,6 @@
         margin: 0;
         overflow-y: scroll;
         overflow-x: hidden;
-
-
     }
 
     .header {
@@ -399,6 +397,44 @@
     }
 
     .finalh1 {}
+
+    .Github-profiles {
+        margin-top: 100px;
+        display: flex;
+        flex-direction: row;
+        gap: 20%;
+        justify-content: center;
+    }
+
+
+    .Github-profiles img {
+        width: 250px;
+        height: 250px;
+        border-radius: 10px;
+    }
+
+
+
+
+    .four-ab-infoss {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .four-ab-infoss h1 {
+        font-family: "Poppins", sans-serif;
+        font-family: "Red Hat Display", sans-serif;
+        text-align: center;
+    }
+
+    .four-ab-infoss h2 {
+        font-family: "Poppins", sans-serif;
+        font-family: "Red Hat Display", sans-serif;
+        text-align: center;
+        margin-top: -10px;
+    }
 </style>
 
 <body>
@@ -554,8 +590,27 @@
 
             <div class="intro-sections">
                 <hr />
-                <h1 style="color: gold; font-size: 3em;">THE WINNER TAKES IT ALL! 👑 </h1>
+                <h1 style="color: gold; font-size: 3em;" id="winnerText">THE WINNER TAKES IT ALL! 👑 </h1>
                 <hr />
+            </div>
+            <div class="Github-profiles">
+
+                <div class="four-ab-info" id="screen1">
+                    <img src="./images/crown.svg" id="" alt="Crown emoji" class="emojis">
+                    <img src="" id="winnerImage-one" alt="Crown emoji" class="emojis">
+                    <h1 id="finalepoints1">Points: 0/40 </h1>
+                    <h2 id="winningScreen1">User ____ Won by ___ points</h2>
+                </div>
+
+                <div class="four-ab-infoss" id="screen2">
+                    <img src="./images/crown.svg" id="" alt="Crown emoji" class="emojis">
+                    <img src="" id="winnerImage-two" alt="Crown emoji" class="emojis">
+                    <h1 id="finalepoints2">Points: 0/40 </h1>
+                    <h2 id="winningScreen2">User ____ Won by ___ points</h2>
+
+                </div>
+
+
             </div>
 
         </div>
