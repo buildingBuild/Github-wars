@@ -467,6 +467,84 @@
         cursor: auto;
         font-family: 'Roboto', sans-serif;
     }
+
+    @media (max-width: 1024px) {
+        .flex-container {
+            overflow-x: hidden;
+        }
+
+
+        .basic-info {
+            margin-top: 100px;
+            display: flex;
+            flex-direction: row;
+            gap: 20%;
+            justify-content: center;
+            color: white;
+        }
+
+        .basic-info img {
+            margin-top: 20px;
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+        }
+
+        .Github-profile {
+            margin-top: -5px;
+            display: flex;
+            flex-direction: row;
+            gap: 30%;
+            justify-content: center;
+
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-image: url('./images/purpleWaves.svg');
+            border-radius: 10px;
+            color: white;
+
+        }
+
+        @media (max-width: 768px) {
+
+            .flex-container {
+                overflow-x: hidden;
+            }
+
+
+            .basic-info {
+                margin-top: 100px;
+                display: flex;
+                flex-direction: row;
+                gap: 20%;
+                justify-content: center;
+                color: white;
+            }
+
+            .basic-info img {
+                margin-top: 20px;
+                width: 250px;
+                height: 250px;
+                border-radius: 10px;
+            }
+
+            .Github-profile {
+                margin-top: -5px;
+                display: flex;
+                flex-direction: row;
+                gap: 10%;
+                justify-content: center;
+
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-image: url('./images/purpleWaves.svg');
+                border-radius: 10px;
+                color: white;
+
+            }
+        }
+
+    }
 </style>
 
 <body>
