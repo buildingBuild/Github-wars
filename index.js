@@ -71,6 +71,42 @@ const mockData2 = {
     user_view_type: "public"
 };
 
+const mockData3 = {
+    login: "buildingBuild",
+    id: 202376688,
+    node_id: "U_kgDODBAF8A",
+    avatar_url: "https://avatars.githubusercontent.com/u/202376688?v=4",
+    gravatar_id: "",
+    url: "https://api.github.com/users/buildingBuild",
+    html_url: "https://github.com/buildingBuild",
+    followers_url: "https://api.github.com/users/buildingBuild/followers",
+    following_url: "https://api.github.com/users/buildingBuild/following{/other_user}",
+    gists_url: "https://api.github.com/users/buildingBuild/gists{/gist_id}",
+    starred_url: "https://api.github.com/users/buildingBuild/starred{/owner}{/repo}",
+    subscriptions_url: "https://api.github.com/users/buildingBuild/subscriptions",
+    organizations_url: "https://api.github.com/users/buildingBuild/orgs",
+    repos_url: "https://api.github.com/users/buildingBuild/repos",
+    events_url: "https://api.github.com/users/buildingBuild/events{/privacy}",
+    received_events_url: "https://api.github.com/users/buildingBuild/received_events",
+    type: "User",
+    site_admin: false,
+    name: null,
+    company: null,
+    blog: "",
+    location: null,
+    email: null,
+    hireable: null,
+    bio: null,
+    twitter_username: null,
+    public_repos: 7,
+    public_gists: 0,
+    followers: 0,
+    following: 0,
+    created_at: "2025-03-08T04:55:16Z",
+    updated_at: "2025-06-13T22:43:40Z",
+    user_view_type: "public"
+};
+
 
 const mockData1Repo = [
     {
@@ -187,6 +223,65 @@ const mockData2Repo = [
         homepage: null,
     },
 ];
+
+const mockData3Repo = [
+    {
+        name: "BlueModoro",
+        description:
+            "This is an aestheic sleek and responsive Pomodoro timer app designed to help with focus and productivity while also motivating users",
+        language: "CSS",
+        url: "https://github.com/buildingBuild/BlueModoro",
+        homepage: "https://bluemodoro.vercel.app",
+    },
+    {
+        name: "buildingBuild",
+        description: "Config files for my GitHub profile.",
+        language: null,
+        url: "https://github.com/buildingBuild/buildingBuild",
+        homepage: "https://github.com/buildingBuild",
+    },
+    {
+        name: "Github-wars",
+        description:
+            "A fun game whereby you test your github profile stats against your friends and see who wins",
+        language: "HTML",
+        url: "https://github.com/buildingBuild/Github-wars",
+        homepage: null,
+    },
+    {
+        name: "One-piece-Crud-Application",
+        description:
+            "This is was a fun smalll project I did a while back in my first cs class that lets you save various information on pirates in the one piece universe ",
+        language: "C++",
+        url: "https://github.com/buildingBuild/One-piece-Crud-Application",
+        homepage: null,
+    },
+    {
+        name: "PhoneBook",
+        description:
+            "Phone Book console application used for practicing maps and keys used in data structures",
+        language: "C++",
+        url: "https://github.com/buildingBuild/PhoneBook",
+        homepage: null,
+    },
+    {
+        name: "Soundify",
+        description:
+            "A Music Application  that lets users create, organize and manage songs. Create playlists.",
+        language: "C++",
+        url: "https://github.com/buildingBuild/Soundify",
+        homepage: null,
+    },
+    {
+        name: "Vending-Machine-Project",
+        description:
+            "My program is a text-based vending machine program that allows users to buy drinks, restock drink inventory, and manage drink/product information through a terminal interface. It uses a file handling system to save and load inventory data, ensuring that changes can be accessed by other files.",
+        language: "C++",
+        url: "https://github.com/buildingBuild/Vending-Machine-Project",
+        homepage: null,
+    },
+];
+
 
 
 
@@ -690,6 +785,7 @@ function getWinner() {
     finalepoints2 = document.getElementById("finalepoints2");
 
 
+    points1 += 10;
 
     if (points1 == points2) {
 
@@ -726,7 +822,6 @@ function getWinner() {
 
 
 function pageNavigation() {
-
     window.location.href = "works.html";
 
 }
