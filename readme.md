@@ -2,10 +2,7 @@
 This is an application that lets you compete with another using your github profile stats. Things such as projects, tech stack, following and activity are included.
 
 ## 🌐 Live Site
-
-[bluemodoro.vercel.app](https://bluemodoro.vercel.app)
 https://github-wars-mu.vercel.app
-
 
 ## Features
 
