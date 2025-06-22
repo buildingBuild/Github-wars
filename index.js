@@ -71,9 +71,6 @@ const mockData2 = {
     user_view_type: "public"
 };
 
-
-
-
 const mockData1Repo = [
     {
         name: "BlueModoro",
@@ -190,18 +187,19 @@ const mockData2Repo = [
     },
 ];
 
-
-
-
-
-
 const input1 = document.getElementById("input1");
 const input2 = document.getElementById("input2");
 let running = false;
 let userName1;
 let userName2;
+
 let data1 = null;
 let data2 = null;
+
+let data1repo = null;
+let data2repo = null;
+
+
 let points1 = 0;
 let points2 = 0;
 
@@ -220,71 +218,121 @@ let followers2 = 0;
 let following1 = 0;
 let following2 = 0;
 
+const bigdiv = document.getElementById("bigdiv");
+bigdiv.style.display = "none"
+
+let useCounter = 0;
+
+let everChangingText = document.getElementById("everChangingText");
+everChangingText.style.display = "none";
 
 
-let userName1Override = "buildingBuild";
-let userName2Override = "buildingBuild";
-getRelevantInfo(); // jump passing
+
+
+
+// getRelevantInfo(); // jump passing
 async function getusers() {
-    /*
-    
-    
-        const input1work = document.getElementById("user1input");
-        const input2work = document.getElementById("user2input");
-    
-        if (running == true) {
-            return;
+
+    if (useCounter == 1) {
+        location.reload();
+
+    }
+    useCounter += 1;
+
+
+    const input1work = document.getElementById("user1input");
+    const input2work = document.getElementById("user2input");
+
+    if (running == true) {
+        return;
+    }
+    running = true;
+    everChangingText.style.display = "block";
+
+    userName1 = input1.value;
+    userName2 = input2.value;
+
+
+    console.log(userName1);
+    console.log(userName2);
+
+
+    // userName1
+    try {
+        const response = await fetch(`https://api.github.com/users/${userName1}`);
+        if (!response.ok) {
+            throw new Error("Not found")
         }
-        running == true;
-        userName1 = input1.value;
-        userName2 = input2.value;
-    
-    
-        console.log(userName1);
-        console.log(userName2);
-    
-    
-        // userName1
-        try {
-            const response = await fetch(`https://api.github.com/users/${userName1Override}`);
-            if (!response.ok) {
-                throw new Error("Not found")
-            }
-            data1 = await response.json();
-    
-            console.log(data1);
-            console.log(data1.id);
-            input1work.style.visibility = "hidden";
+        data1 = await response.json();
+
+        console.log(data1);
+        console.log(data1.id);
+        input1work.style.visibility = "hidden";
+    }
+    catch (Error) {
+        console.error(`Error ${Error}`);
+        input1work.style.visibility = "visible";
+        return;
+    }
+    //userName2
+    try {
+        const response = await fetch(`https://api.github.com/users/${userName2}`);
+        if (!response.ok) {
+            throw new Error("Not found")
         }
-        catch (Error) {
-            console.error(`Error ${Error}`);
-            input1work.style.visibility = "visible";
-            return;
+        data2 = await response.json();
+
+        console.log(data2);
+        console.log(data2.id);
+        input2work.style.visibility = "hidden";
+
+    }
+    catch (Error) {
+        console.error(`Error ${Error}`);
+        input2work.style.visibility = "visible";
+        return;
+    }
+
+    // userName 1 repo
+    try {
+        const response = await fetch(`https://api.github.com/users/${userName1}/repos`);
+        if (!response.ok) {
+            throw new Error("Not found")
         }
-        //userName2
-        try {
-            const response = await fetch(`https://api.github.com/users/${userName2Override}`);
-            if (!response.ok) {
-                throw new Error("Not found")
-            }
-            data2 = await response.json();
-    
-            console.log(data2);
-            console.log(data2.id);
-            input2work.style.visibility = "hidden";
-    
+        data1repo = await response.json();
+
+        console.log(data1repo);
+        input1work.style.visibility = "hidden";
+    }
+    catch (Error) {
+        console.error(`Error ${Error}`);
+        input1work.style.visibility = "visible";
+        return;
+    }
+
+    // userName 2 repo
+
+    try {
+        const response = await fetch(`https://api.github.com/users/${userName2}/repos`);
+        if (!response.ok) {
+            throw new Error("Not found")
         }
-        catch (Error) {
-            console.error(`Error ${Error}`);
-            input2work.style.visibility = "visible";
-            return;
-        }
-    
-    
-        //  https://api.github.com/users/{username}/repos
-        getRelevantInfo()
-    
-    */
+        data2repo = await response.json();
+
+        console.log(data2repo);
+        input2work.style.visibility = "hidden";
+    }
+    catch (Error) {
+        console.error(`Error ${Error}`);
+        input2work.style.visibility = "visible";
+        return;
+    }
+
+    everChangingText.textContent = "Getting Relevant Info...";
+    //  https://api.github.com/users/{username}/repos
+    getRelevantInfo();
+
+
 
 }
 
@@ -294,15 +342,16 @@ function getRelevantInfo() {
     const img1 = document.getElementById("img1")
     const img2 = document.getElementById("img2");
 
-    img1.setAttribute("src", mockData1.avatar_url);
-    img2.setAttribute("src", mockData2.avatar_url);
+    img1.setAttribute("src", data1.avatar_url);
+    img2.setAttribute("src", data2.avatar_url);
 
     const user1 = document.getElementById("userName1Heading")
     const user2 = document.getElementById("userName2Heading")
 
 
-    user1.textContent += mockData1.login;
-    user2.textContent += mockData2.login;
+    user1.textContent += data1.login;
+    user2.textContent += data2.login;
+    everChangingText.textContent = "Finding Profile Info...";
 
     findProfiles();
 }
@@ -345,9 +394,9 @@ function findProfiles() {
 
 function findProfile1() {
 
-    for (let i = 0; i < mockData1.public_repos; i++) {
+    for (let i = 0; i < data1repo.length; i++) {
 
-        if (mockData1Repo[i].name == mockData1.login) {
+        if (data1repo[i].name == data1.login) {
 
             return true;
         }
@@ -355,15 +404,21 @@ function findProfile1() {
     }
     return false;
 
+    /*
+        if (mockData1Repo[i].name == mockData1.login) {
+    
+            return true;
+        }
+    */
 }
 
 function findProfile2() {
 
-    for (let i = 0; i < mockData2.public_repos; i++) {
+    for (let i = 0; i < data2repo.length; i++) {
 
 
 
-        if (mockData2Repo[i].name == mockData2.login) {
+        if (data2repo[i].name == data2.login) {
 
             return true;
         }
@@ -428,7 +483,7 @@ async function getProjects_Commits() { // formerly was regular function then I r
     projectAmount1.textContent = `MVs repos/Projects:  ${Projectcounter1}`;
     projectAmount2.textContent = `MVs repos/Projects: ${Projectcounter2}`;
 
-
+    everChangingText.textContent = "Getting commits Info....";
     getTechStack();
 
 
@@ -438,15 +493,16 @@ async function getProjects_Commits() { // formerly was regular function then I r
 
 async function getProjects_Commits1() {
 
-    for (let i = 0; i < mockData1.public_repos; i++) {
+    for (let i = 0; i < data1repo.length; i++) {
 
-        let repoName = mockData1Repo[i].name;
-        let response = await fetch(`https://api.github.com/repos/${userName1Override}/${repoName}/readme`);
+        let repoName = data1repo[i].name;
+        // let repoName = mockData1Repo[i].name;
+        let response = await fetch(`https://api.github.com/repos/${userName1}/${repoName}/readme`);
         if (!response.ok) {
             continue;
         }
 
-        let responseB = await fetch(`https://api.github.com/repos/${userName1Override}/${repoName}/commits?per_page=10`);
+        let responseB = await fetch(`https://api.github.com/repos/${userName1}/${repoName}/commits?per_page=10`);
         if (!responseB.ok) {
             continue;
         }
@@ -468,15 +524,15 @@ async function getProjects_Commits1() {
 
 async function getProjects_Commits2() {
 
-    for (let i = 0; i < mockData2.public_repos; i++) {
+    for (let i = 0; i < data2repo.length; i++) {
 
-        let repoName = mockData2Repo[i].name;
-        let response = await fetch(`https://api.github.com/repos/${userName2Override}/${repoName}/readme`);
+        let repoName = data2repo[i].name;
+        let response = await fetch(`https://api.github.com/repos/${userName2}/${repoName}/readme`);
         if (!response.ok) {
             continue;
         }
 
-        let responseB = await fetch(`https://api.github.com/repos/${userName2Override}/${repoName}/commits?per_page=10`);
+        let responseB = await fetch(`https://api.github.com/repos/${userName2}/${repoName}/commits?per_page=10`);
         if (!responseB.ok) {
             continue;
         }
@@ -564,10 +620,10 @@ async function getTechStack() {
 
     })
 
-    point1result.textContent = `Points: ${points2}`;
+    point1result.textContent = `Points: ${points1}`;
     points2result.textContent = `Points: ${points2}`;
 
-
+    everChangingText.textContent = "oh someones popular....";
 
     getFollowersandForks();
 
@@ -575,9 +631,9 @@ async function getTechStack() {
 }
 
 async function getTechStack1() {
-    for (let i = 0; i < mockData1.public_repos; i++) {
+    for (let i = 0; i < data1repo.length; i++) {
 
-        languages1.add(`${mockData1Repo[i].language}`);
+        languages1.add(`${data1repo[i].language}`);
 
     }
 
@@ -585,9 +641,9 @@ async function getTechStack1() {
 }
 
 async function getTechStack2() {
-    for (let i = 0; i < mockData2.public_repos; i++) {
+    for (let i = 0; i < data2repo.length; i++) {
 
-        languages2.add(`${mockData2Repo[i].language}`);
+        languages2.add(`${data2repo[i].language}`);
 
     }
 
@@ -665,22 +721,22 @@ async function getFollowersandForks() {
     const lastPoints2 = document.getElementById("points2-D");
 
     lastPoints1.textContent = `Points: ${points1}`;
-    lastPoints2.textContent = `Points: ${points1}`;
-
+    lastPoints2.textContent = `Points: ${points2}`;
+    everChangingText.textContent = "Finding the winner...";
     getWinner();
 }
 
 
 async function getFollowersandForks1() {
 
-    followers1 = mockData1.followers;
-    following1 = mockData1.following;
+    followers1 = data1.followers;
+    following1 = data2.following;
 
 }
 
 async function getFollowersandForks2() {
-    followers2 = mockData2.followers;
-    following2 = mockData2.following;
+    followers2 = data2.followers;
+    following2 = data2.following;
 }
 
 
@@ -701,8 +757,8 @@ function getWinner() {
         let winnerText = document.getElementById("winnerText");
         winnerText.textContent = "FIERCE BATTLE, YOU BOTH ARE WINNERS ! "
         screen2.style.display = "flex";
-        img1finale.setAttribute("src", mockData1.avatar_url);
-        img2finale.setAttribute("src", mockData2.avatar_url);
+        img1finale.setAttribute("src", data1.avatar_url);
+        img2finale.setAttribute("src", data2.avatar_url);
         winningScreen1.style.display = "none";
         winningScreen2.style.display = "none";
         finalepoints1.textContent = `Points: ${points1}/40`
@@ -713,20 +769,23 @@ function getWinner() {
 
 
     if (points1 > points2) {
-        img1finale.setAttribute("src", mockData1.avatar_url)
+        img1finale.setAttribute("src", data1.avatar_url)
         screen2.style.display = "none";
         winningScreen1.style.display = "block";
-        winningScreen1.textContent = `User ${mockData1.login} won by ${points1 - points2} points`;
+        winningScreen1.textContent = `User ${data1.login} won by ${points1 - points2} points`;
         finalepoints1.textContent = `Points: ${points1}/40`
     }
     if (points2 > points1) {
-        img2finale.setAttribute("src", mockData2.avatar_url);
+        img2finale.setAttribute("src", data2.avatar_url);
         screen2.style.display = "none";
         winningScreen1.style.display = "block";
-        winningScreen1.textContent = `User ${mockData2.login} won by ${points2 - points1} points`;
+        winningScreen1.textContent = `User ${data2.login} won by ${points2 - points1} points`;
         finalepoints1.textContent = `Points: ${points2}/40`
     }
 
+    running = false;
+    bigdiv.style.display = "block"
+    everChangingText.textContent = "Done!!!";
 }
 
 

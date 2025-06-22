@@ -91,7 +91,8 @@ body {
 
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url('./images/stacked.svg');
+  
+    background-color: white;
 
 
 
@@ -451,6 +452,10 @@ hr {
         overflow-x: hidden;
     }
 
+    .header-nav{
+        text-align: center;
+        margin-right: 220px;
+    }
 
     .basic-info {
         margin-top: 100px;
@@ -557,6 +562,9 @@ hr {
             letter-spacing: 3px;
         }
 
+        .header-nav{
+            margin-right: 100px;
+        }
 
 
     }
