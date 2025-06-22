@@ -785,7 +785,6 @@ function getWinner() {
     finalepoints2 = document.getElementById("finalepoints2");
 
 
-    points1 += 10;
 
     if (points1 == points2) {
 
