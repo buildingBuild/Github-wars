@@ -4,6 +4,8 @@ This is an application that lets you compete with another using your github prof
 ## 🌐 Live Site
 
 [bluemodoro.vercel.app](https://bluemodoro.vercel.app)
+https://github-wars-mu.vercel.app
+
 
 ## Features
 
