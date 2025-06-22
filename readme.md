@@ -24,6 +24,8 @@ This is an application that lets you compete with another using your github prof
 ## Screenshots
 
 <div>
-<img width="200" alt = "active view2" src="" />
-<img width="250" height ="auto" alt="Active view" src="" />
+<img width="200" alt = "active view2" src="./images/finalImage6.png" />
+<img width="200" alt = "active view2" src="./images/finalImage4.png" />
+<img width="200" alt = "active view2" src="./images/finalImage3.png" />
+<img width="200" alt = "active view2" src="./images/finalImage1.png" />
 </div>
